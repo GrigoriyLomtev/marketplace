@@ -1,4 +1,3 @@
-import { error } from "console";
 import React, { useContext } from "react";
 import { CreateProduct } from "../components/CreateProduct";
 import ErrorMessage from "../components/ErrorMessage";
@@ -6,8 +5,6 @@ import Loader from "../components/Loader";
 import { Modal } from "../components/Modal";
 import { Product } from "../components/Product";
 import { ModalContext } from "../context/ModalContext";
-import { products } from "../data/products";
-
 import { useProducts } from "../hooks/products";
 import { IProduct } from "../models";
 

@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { useState, useEffect } from "react";
+import { PRODUCT_ENDPOINT } from "../config";
 import { IProduct } from "../models";
 
 export function useProducts() {
@@ -8,7 +9,7 @@ export function useProducts() {
   const [error, setError] = useState("");
 
   function addProduct(product: IProduct) {
-    setProducts((prev) => [...prev, product]);
+    setProducts((prev) => [product, ...prev]);
   }
 
   async function fetchProducts() {
@@ -16,8 +17,8 @@ export function useProducts() {
       setError("");
       setLoading(true);
       const response = await axios.get<IProduct[]>(
-        // "https://api.escuelajs.co/api/v1/products"
-        "https://api.escuelajs.co/api/v1/products?offset=0&limit=5"
+        // PRODUCT_ENDPOINT
+        `${PRODUCT_ENDPOINT}?offset=0&limit=5`
       );
       setProducts(response.data);
       setLoading(false);

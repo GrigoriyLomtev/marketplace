@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { PRODUCT_ENDPOINT } from "../config";
 import { IProduct } from "../models";
 import ErrorMessage from "./ErrorMessage";
 
@@ -35,10 +36,7 @@ export function CreateProduct({ onCreate }: CreateProductProps) {
 
     productData.title = value;
 
-    const response = await axios.post<IProduct>(
-      "https://api.escuelajs.co/api/v1/products/",
-      productData
-    );
+    const response = await axios.post<IProduct>(PRODUCT_ENDPOINT, productData);
 
     onCreate(response.data);
   };
